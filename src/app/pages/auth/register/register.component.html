@@ -1,0 +1,57 @@
+<div class="container animated fadeInUp">
+  <div class="row mt-5">
+    <!-- Column -->
+    <div class="col-lg-5 col-xlg-5 col-md-5 m-auto ">
+      <div class="white-box">
+        <div class="user-bg"><img width="100%" alt="user" src="./assets/plugins/images/large/img1.jpg">
+          <div class="overlay-box">
+            <div class="user-content">
+              <a href="javascript:void(0)"><img src="./assets/plugins/images/users/genu.jpg" class="thumb-lg img-circle"
+                                                alt="img"></a>
+              <h4 class="text-white mt-2">Inicio de Sesión</h4>
+            </div>
+          </div>
+        </div>
+        <div class="user-btm-box mt-5 d-md-flex">
+          <div class="col-12">
+            <form [formGroup]="adminRegisterForm"
+                  class="m-t" role="form"
+                  (ngSubmit)="register()">
+              <div class="form-group">
+                <input type="email" name="email" formControlName="email" class="form-control" placeholder="Email"
+                       required="">
+              </div>
+              <div class="form-group">
+                <input type="password" name="password" formControlName="password" class="form-control"
+                       placeholder="Password"
+                       required="">
+              </div>
+              <div class="form-group">
+                <input type="password" name="passwordr" formControlName="passwordr" class="form-control"
+                       placeholder="Repeat Password"
+                       required="">
+              </div>
+              <app-error-container *ngIf="errorMessage && !loading" [errorMessage]="errorMessage"></app-error-container>
+              <app-loading-container *ngIf="loading" [message]="'Validando datos...'"></app-loading-container>
+
+              <div class="row">
+                <div class="col-6">
+                  <button [disabled]="loading" type="submit" class="btn btn-primary block full-width m-b">Register</button>
+                </div>
+                <div class="col-6">
+                  <button [disabled]="loading"
+                          routerLink="/login"
+                          type="button"
+                          class="btn btn-primary block full-width m-b">Login
+                  </button>
+                </div>
+              </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Column -->
+  </div>
+</div>
