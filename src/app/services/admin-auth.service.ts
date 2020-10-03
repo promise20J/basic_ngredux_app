@@ -34,7 +34,7 @@ export class AdminAuthService {
 
   checkToken(redirect: boolean): boolean {
     if (redirect && this.dataService.getToken()) {
-      this.router.navigate(['/dashboard/home']);
+      this.router.navigate(['/dashboard/profile']);
     }
     return !this.dataService.getToken();
   }

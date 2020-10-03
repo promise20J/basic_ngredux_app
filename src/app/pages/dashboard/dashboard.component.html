@@ -11,13 +11,13 @@
         <!-- Logo icon -->
         <b class="logo-icon">
           <!-- Dark Logo icon -->
-          <img src="./assets/plugins/images/logo-icon.png" alt="homepage" />
+          <img src="./assets/plugins/images/logo-icon.png" alt="homepage"/>
         </b>
         <!--End Logo icon -->
         <!-- Logo text -->
         <span class="logo-text">
                             <!-- dark Logo text -->
-                            <img src="./assets/plugins/images/logo-text.png" alt="homepage" />
+                            <img src="./assets/plugins/images/logo-text.png" alt="homepage"/>
                         </span>
       </a>
       <!-- ============================================================== -->
@@ -45,16 +45,6 @@
       <ul class="navbar-nav ml-auto d-flex align-items-center">
 
         <!-- ============================================================== -->
-        <!-- Search -->
-        <!-- ============================================================== -->
-        <li class=" in">
-          <form role="search" class="app-search d-none d-md-block mr-3">
-            <input type="text" placeholder="Search..." class="form-control mt-0">
-            <a href="" class="active">
-              <i class="fa fa-search"></i>
-            </a>
-          </form>
-        </li>
         <!-- ============================================================== -->
         <!-- User profile and search -->
         <!-- ============================================================== -->
@@ -83,28 +73,38 @@
     <nav class="sidebar-nav">
       <ul id="sidebarnav">
         <!-- User Profile-->
-        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                     href="index.html" aria-expanded="false"><i class="fas fa-clock fa-fw"
-                                                                                aria-hidden="true"></i><span class="hide-menu">Dashboard</span></a></li>
-        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                     href="profile.html" aria-expanded="false">
+        <li class="sidebar-item"><a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                    routerLinkActive="active"
+                                    routerLink="profile" aria-expanded="false">
           <i class="fa fa-user" aria-hidden="true"></i><span class="hide-menu">Profile</span></a>
         </li>
-        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                     href="basic-table.html" aria-expanded="false"><i class="fa fa-table"
-                                                                                      aria-hidden="true"></i><span class="hide-menu">Table</span></a></li>
-        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                     href="fontawesome.html" aria-expanded="false"><i class="fa fa-font"
-                                                                                      aria-hidden="true"></i><span class="hide-menu">Icon</span></a></li>
-        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                     href="map-google.html" aria-expanded="false"><i class="fa fa-globe"
-                                                                                     aria-hidden="true"></i><span class="hide-menu">Google Map</span></a></li>
-        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                     href="blank.html" aria-expanded="false"><i class="fa fa-columns"
-                                                                                aria-hidden="true"></i><span class="hide-menu">Blank</span></a></li>
-        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                     href="404.html" aria-expanded="false"><i class="fa fa-info-circle"
-                                                                              aria-hidden="true"></i><span class="hide-menu">404</span></a></li>
+        <li class="sidebar-item">
+          <a class="sidebar-link waves-effect waves-dark sidebar-link"
+             routerLinkActive="active"
+             routerLink="doctypes" aria-expanded="false">
+            <i class="fa fa-table"
+               aria-hidden="true"></i>
+            <span class="hide-menu">Tipos de Documentos</span></a>
+        </li>
+
+        <li class="sidebar-item">
+          <a class="sidebar-link waves-effect waves-dark sidebar-link"
+             routerLinkActive="active"
+             routerLink="contributors" aria-expanded="false">
+            <i class="fa fa-table"
+               aria-hidden="true"></i>
+            <span class="hide-menu">Tipos de Contribuyentes</span></a>
+        </li>
+
+        <li class="sidebar-item">
+          <a class="sidebar-link waves-effect waves-dark sidebar-link"
+             routerLinkActive="active"
+             routerLink="entities" aria-expanded="false">
+            <i class="fa fa-table"
+               aria-hidden="true"></i>
+            <span class="hide-menu">Entidades</span></a>
+        </li>
+
 
       </ul>
 

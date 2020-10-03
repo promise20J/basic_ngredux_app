@@ -1,0 +1,77 @@
+<!-- Container fluid  -->
+<!-- ============================================================== -->
+<div class="container-fluid">
+  <!-- ============================================================== -->
+  <!-- Start Page Content -->
+  <!-- ============================================================== -->
+
+  <app-loading-container message="Cargando entidades..." *ngIf="loading"></app-loading-container>
+  <app-info-container [message]="message" *ngIf="message && !loading"></app-info-container>
+  <app-error-container [errorMessage]="errorMessage" *ngIf="errorMessage && !loading"></app-error-container>
+  <div class="row" *ngIf="!loading && entities.length === 0">
+    <app-info-container
+      class="col-10"
+      message="Sin entidades para mostrar."></app-info-container>
+    <div class="col-2">
+      <button class="btn btn-sm btn-primary mt-2" routerLink="register"><i class="fa fa-plus"></i></button>
+    </div>
+  </div>
+  <div *ngIf="!loading && entities.length > 0" class="row">
+    <div class="col-sm-12">
+      <div class="white-box">
+        <div class="container">
+          <div class="row">
+            <div class="col-10 text-center">
+              <h3 class="box-title">Listado de Entidades</h3>
+            </div>
+            <div class="col-2">
+              <button class="btn btn-sm btn-primary"
+                      routerLink="register"><i class="fa fa-plus"></i></button>
+            </div>
+          </div>
+        </div>
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+            <tr>
+              <th class="border-top-0">Tipo de documento</th>
+              <th class="border-top-0">Número de documento</th>
+              <th class="border-top-0">R. Social</th>
+              <th class="border-top-0">R. Comercial</th>
+              <th class="border-top-0">Contribuyente</th>
+              <th class="border-top-0">Direccion</th>
+              <th class="border-top-0">Teléfono</th>
+              <th class="border-top-0">Estado</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="pointer" *ngFor="let entitie of entities" (click)="moveToUpdate(entitie)">
+              <td>{{entitie.docTypeName}}</td>
+              <td>{{entitie.documentNumber}}</td>
+              <td>{{entitie.bussinesName}}</td>
+              <td>{{entitie.businessReason}}</td>
+              <td>{{entitie.contributorName}}</td>
+              <td>{{entitie.address}}</td>
+              <td>{{entitie.phone}}</td>
+              <td>{{entitie.status ? 'ACTIVO' : 'INACTIVO'}}</td>
+
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ============================================================== -->
+  <!-- End PAge Content -->
+  <!-- ============================================================== -->
+  <!-- ============================================================== -->
+  <!-- Right sidebar -->
+  <!-- ============================================================== -->
+  <!-- .right-sidebar -->
+  <!-- ============================================================== -->
+  <!-- End Right sidebar -->
+  <!-- ============================================================== -->
+</div>
+<!-- ============================================================== -->
+<!-- End Container fluid  -->

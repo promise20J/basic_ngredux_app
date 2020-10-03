@@ -1,0 +1,72 @@
+<app-loading-container message="Cargando documento..." *ngIf="loading && !infoMessage"></app-loading-container>
+<app-loading-container [message]="message" *ngIf="infoMessage && loading"></app-loading-container>
+<app-info-container [message]="message" *ngIf="infoMessage && !loading"></app-info-container>
+<app-error-container [errorMessage]="errorMessage" *ngIf="errorMessage && !loading"></app-error-container>
+
+<div *ngIf="!loading">
+
+  <!-- Column -->
+  <div class="col-lg-8 col-xlg-9 offset-lg-2 col-md-12">
+    <div class="card">
+      <div class="card-body">
+
+        <div class="container">
+          <div class="row">
+            <div class="col-10 text-center">
+              <h4>Registro de documento</h4>
+            </div>
+            <div class="col-2 text-left">
+              <button class="btn btn-sm btn-info" routerLink="/dashboard/doctypes"><i class="fa fa-backward"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <form class="form-horizontal form-material"
+              (ngSubmit)="registerDocument()"
+              [formGroup]="documentFormRegister">
+          <div class="form-group mb-4">
+            <label class="col-md-12 p-0">Código</label>
+            <div class="col-md-12 border-bottom p-0">
+              <input type="text" placeholder=""
+                     formControlName="code"
+                     class="form-control p-0 border-0"></div>
+          </div>
+          <div class="form-group mb-4">
+            <label class="col-md-12 p-0">Nombre</label>
+            <div class="col-md-12 border-bottom p-0">
+              <input type="text" placeholder=""
+                     formControlName="name"
+                     class="form-control p-0 border-0">
+            </div>
+          </div>
+          <div class="form-group mb-4">
+            <label class="col-md-12 p-0">Descripción</label>
+            <div class="col-md-12 border-bottom p-0">
+              <input type="text" value=""
+                     formControlName="description"
+                     class="form-control p-0 border-0">
+            </div>
+          </div>
+          <div class="form-group mb-4">
+            <label class="col-md-12 p-0">Estado</label>
+            <div class="col-md-2 p-0">
+              <input type="checkbox" placeholder=""
+                     formControlName="status"
+                     class="form-control form-control-sm p-0 border-0">
+            </div>
+          </div>
+          <div class="form-group mb-4">
+            <div class="row">
+              <div class="col-sm-6">
+                <button type="submit" class="btn btn-success" [disabled]="documentFormRegister.invalid">Registrar
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- Column -->
+</div>

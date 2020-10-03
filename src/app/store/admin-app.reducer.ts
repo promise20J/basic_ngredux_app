@@ -1,23 +1,43 @@
-import {AdminGStoreReducer, AdminGStoreState} from './reducers/admin-dashboard.reducer';
 import {ActionReducerMap, createFeatureSelector, createSelector} from '@ngrx/store';
 import {AppState} from './app.reducer';
+import {ProfileReducer, ProfileState} from './reducers/profile.reducer';
+import {DocTypesReducer, DoctypesState} from './reducers/doctypes.reducer';
+import {ContributorsReducer, ContributorsState} from './reducers/contributor.reducer';
+import {EntitiesReducer, EntitiesState} from './reducers/entities.reducer';
 
 
 export interface InternalAdminState {
-  dashboardState: AdminGStoreState;
-}
-
-export interface AppAdminState extends AppState {
-  adminState: InternalAdminState;
+  profileState: ProfileState;
+  doctypesState: DoctypesState;
+  contributorsState: ContributorsState;
+  entitiesState: EntitiesState;
 }
 
 export const AdminAppReducer: ActionReducerMap<InternalAdminState> = {
-  dashboardState: AdminGStoreReducer,
+  profileState: ProfileReducer,
+  doctypesState: DocTypesReducer,
+  contributorsState: ContributorsReducer,
+  entitiesState: EntitiesReducer,
 };
 
-export const selectFeature = createFeatureSelector<AppAdminState, InternalAdminState>('adminState');
+// Actualizar reducer (lazy load en redux)
+export interface AppAdminState extends AppState {
+  internalAdminState: InternalAdminState;
+}
 
-export const selectFeatureGStore = createSelector(
+export const selectFeature = createFeatureSelector<AppAdminState, InternalAdminState>('internalAdminState');
+
+export const selectDocTypes = createSelector(
   selectFeature,
-  (state: InternalAdminState) => state.dashboardState
+  (state: InternalAdminState) => state.doctypesState
+);
+
+export const selectContributorFeature = createSelector(
+  selectFeature,
+  (state: InternalAdminState) => state.contributorsState
+);
+
+export const selectEntitieFeature = createSelector(
+  selectFeature,
+  (state: InternalAdminState) => state.entitiesState
 );

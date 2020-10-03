@@ -1,0 +1,113 @@
+<app-loading-container message="Cargando documento..." *ngIf="loading && !infoMessage"></app-loading-container>
+<app-loading-container [message]="message" *ngIf="infoMessage && loading"></app-loading-container>
+<app-info-container [message]="message" *ngIf="infoMessage && !loading"></app-info-container>
+<app-error-container [errorMessage]="errorMessage" *ngIf="errorMessage && !loading"></app-error-container>
+
+
+<div *ngIf="!loading">
+
+  <!-- Column -->
+  <div class="col-lg-8 col-xlg-9 offset-lg-2 col-md-12">
+    <div class="card">
+      <div class="card-body">
+
+        <div class="container">
+          <div class="row">
+            <div class="col-10 text-center">
+              <h4>Actualización de Contribuyente</h4>
+            </div>
+            <div class="col-2 text-left">
+              <button class="btn btn-sm btn-info" routerLink="/dashboard/contributors"><i class="fa fa-backward"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <form class="form-horizontal form-material"
+              (ngSubmit)="registerEntitie()"
+              [formGroup]="entitieFormRegister">
+          <div class="form-group mb-4">
+            <label class="col-md-12 p-0">Tipo de Documento</label>
+            <div class="col-md-12 border-bottom p-0">
+              <select
+                class="form-control form-control-sm"
+                formControlName="documentTypeCode">
+                <option *ngFor="let doctype of doctypes" [value]="doctype.id"> {{doctype.name}}</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group mb-4">
+            <label class="col-md-12 p-0">Número de documento</label>
+            <div class="col-md-12 border-bottom p-0">
+              <input type="text" placeholder=""
+                     formControlName="documentNumber"
+                     class="form-control p-0 border-0">
+            </div>
+          </div>
+          <div class="form-group mb-4">
+            <label class="col-md-12 p-0">Razón Social</label>
+            <div class="col-md-12 border-bottom p-0">
+              <input type="text" placeholder=""
+                     formControlName="bussinesName"
+                     class="form-control p-0 border-0">
+            </div>
+          </div>
+          <div class="form-group mb-4">
+            <label class="col-md-12 p-0">Razón Comercial</label>
+            <div class="col-md-12 border-bottom p-0">
+              <input type="text" placeholder=""
+                     formControlName="businessReason"
+                     class="form-control p-0 border-0">
+            </div>
+          </div>
+          <div class="form-group mb-4">
+            <label class="col-md-12 p-0">Tipo de Contribuyente</label>
+            <div class="col-md-12 border-bottom p-0">
+              <select
+                class="form-control form-control-sm"
+                formControlName="contributorCode">
+                <option *ngFor="let contributor of contributors"
+                        [value]="contributor.code"> {{contributor.name}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group mb-4">
+            <label class="col-md-12 p-0">Dirección</label>
+            <div class="col-md-12 border-bottom p-0">
+              <input type="text" placeholder=""
+                     formControlName="address"
+                     class="form-control p-0 border-0">
+            </div>
+          </div>
+          <div class="form-group mb-4">
+            <label class="col-md-12 p-0">Teléfono</label>
+            <div class="col-md-12 border-bottom p-0">
+              <input type="text" placeholder=""
+                     formControlName="phone"
+                     class="form-control p-0 border-0">
+            </div>
+          </div>
+
+          <div class="form-group mb-4">
+            <label class="col-md-12 p-0">Estado</label>
+            <div class="col-md-2 p-0">
+              <input type="checkbox" placeholder=""
+                     formControlName="status"
+                     class="form-control form-control-sm p-0 border-0">
+            </div>
+          </div>
+          <div class="form-group mb-4">
+            <div class="row">
+              <div class="col-sm-6">
+                <button type="submit" class="btn btn-success" [disabled]="entitieFormRegister.invalid">Registrar
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- Column -->
+</div>

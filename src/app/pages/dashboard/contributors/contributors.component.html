@@ -1,0 +1,71 @@
+<!-- Container fluid  -->
+<!-- ============================================================== -->
+<div class="container-fluid">
+  <!-- ============================================================== -->
+  <!-- Start Page Content -->
+  <!-- ============================================================== -->
+
+  <app-loading-container message="Cargando contribuyentes..." *ngIf="loading"></app-loading-container>
+  <app-info-container [message]="message" *ngIf="message && !loading"></app-info-container>
+  <app-error-container [errorMessage]="errorMessage" *ngIf="errorMessage && !loading"></app-error-container>
+  <div class="row" *ngIf="!loading && contributors.length === 0">
+    <app-info-container
+      class="col-10"
+      message="Sin contribuyentes para mostrar."></app-info-container>
+    <div class="col-2">
+      <button class="btn btn-sm btn-primary mt-2" routerLink="register"><i class="fa fa-plus"></i></button>
+    </div>
+  </div>
+
+  <div *ngIf="!loading && contributors.length > 0" class="row">
+    <div class="col-sm-12">
+      <div class="white-box">
+        <div class="container">
+          <div class="row">
+            <div class="col-10 text-center">
+              <h3 class="box-title">Listado de Tipos de Contribuyentes</h3>
+            </div>
+            <div class="col-2">
+              <button class="btn btn-sm btn-primary"
+                      routerLink="register"><i class="fa fa-plus"></i></button>
+            </div>
+          </div>
+        </div>
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+            <tr>
+              <th class="border-top-0">Nombre</th>
+              <th class="border-top-0">Estado</th>
+              <th class="border-top-0">Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let contributor of contributors">
+              <td>{{contributor.name}}</td>
+              <td>{{contributor.status ? 'ACTIVO' : 'INACTIVO'}}</td>
+              <td>
+                <button class="btn btn-sm btn-secondary" (click)="moveToUpdate(contributor)">
+                  <i class="fa fa-pencil-alt"></i>
+                </button>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ============================================================== -->
+  <!-- End PAge Content -->
+  <!-- ============================================================== -->
+  <!-- ============================================================== -->
+  <!-- Right sidebar -->
+  <!-- ============================================================== -->
+  <!-- .right-sidebar -->
+  <!-- ============================================================== -->
+  <!-- End Right sidebar -->
+  <!-- ============================================================== -->
+</div>
+<!-- ============================================================== -->
+<!-- End Container fluid  -->
