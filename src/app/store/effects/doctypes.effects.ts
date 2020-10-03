@@ -4,7 +4,6 @@ import {
   DoctypesTypes,
   LoadingDocTypeByCodeAction,
   LoadingDocTypeFailureAction,
-  LoadingDocTypesAction,
   LoadingDocTypesSuccessAction,
   RegisterDocTypeAction,
   SetDocTypeForUpdateAction,
@@ -15,8 +14,6 @@ import {
 import {catchError, map, mergeMap} from 'rxjs/operators';
 import {DoctypesService} from '../../services/doctypes.service';
 import {of} from 'rxjs';
-import {UpdateEntitieTypeActionFailure} from '../actions/entitie.actions';
-
 
 @Injectable()
 export class DoctypesEffects {
@@ -67,13 +64,13 @@ export class DoctypesEffects {
         return this.doctypesService.deleteDocument(action.payload.document.id)
           .pipe(
             map((message) => new UpdateDocTypeActionSuccess({document: null, message})),
-            catchError((err) => of(new UpdateEntitieTypeActionFailure({message: err.error.message})))
+            catchError((err) => of(new UpdateDocTypeActionFailure({message: err.error.message})))
           );
       } else {
         return this.doctypesService.updateDocType(action.payload.document)
           .pipe(
             map((document) => new UpdateDocTypeActionSuccess({document})),
-            catchError((err) => of(new UpdateEntitieTypeActionFailure({message: err.error.message})))
+            catchError((err) => of(new UpdateDocTypeActionFailure({message: err.error.message})))
           );
       }
 
